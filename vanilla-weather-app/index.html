@@ -11,9 +11,101 @@
       integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp"
       crossorigin="anonymous"
     />
+    <script
+      src="https://kit.fontawesome.com/77f60f45f9.js"
+      crossorigin="anonymous"
+    ></script>
     <link rel="stylesheet" href="src/style.css" />
   </head>
-  <body></body>
+
+  <body>
+    <div class="container">
+      <div class="wrapper">
+        <div class="row">
+          <div class="col-4 first-col">
+            <div class="temp">
+              <span id="temp">12</span>
+              <div class="units">
+                °<a href="" id="c-unit">C</a>|°<a href="" id="f-unit">F</a>
+              </div>
+            </div>
+            <div class="details">
+              <div class="Precipitation">Precipitation</div>
+              <div class="Humidity">Humidity</div>
+              <div class="wind">wind</div>
+            </div>
+
+            <div class="location-btn">
+              <button
+                type="button"
+                class="btn btn-primary"
+                id="current-location"
+              >
+                Current Location
+              </button>
+            </div>
+          </div>
+          <div class="col-4">
+            <i class="fa-solid fa-cloud-bolt weather-icon"></i>
+            <h1>New York</h1>
+            <h2>date</h2>
+            <div class="search">
+              <form>
+                <div class="search-form" id="search-form">
+                  <input
+                    type="search"
+                    class="form-control"
+                    id="input-search-city"
+                    placeholder="Search for a city"
+                  />
+                </div>
+                <button type="submit" class="btn btn-primary" id="search-btn">
+                  🔍
+                </button>
+              </form>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="forcast-icons">
+              <div>
+                <i class="fa-solid fa-wind">
+                  <span class="forcast-notes"
+                    ><strong> Tomorrow</strong> <br />
+                    Windy</span
+                  ></i
+                >
+              </div>
+              <div>
+                <i class="fa-solid fa-smog"
+                  ><span class="forcast-notes"
+                    ><strong> Saturday</strong> <br />
+                    foggy</span
+                  ></i
+                >
+              </div>
+              <div>
+                <i class="fa-solid fa-cloud-rain"
+                  ><span class="forcast-notes"
+                    ><strong> Sunday</strong> <br />
+                    Rainy</span
+                  ></i
+                >
+              </div>
+              <div>
+                <i class="fa-regular fa-snowflake"
+                  ><span class="forcast-notes"
+                    ><strong> Monday</strong> <br />
+                    Snowy</span
+                  ></i
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer>This app is open-soures</footer>
+  </body>
   <script
     src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N"
