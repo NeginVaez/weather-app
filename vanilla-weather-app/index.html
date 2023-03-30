@@ -15,6 +15,7 @@
       src="https://kit.fontawesome.com/77f60f45f9.js"
       crossorigin="anonymous"
     ></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
     <link rel="stylesheet" href="src/style.css" />
   </head>
 
@@ -24,15 +25,17 @@
         <div class="row">
           <div class="col-4 first-col">
             <div class="temp">
-              <span id="temp">12</span>
+              <span id="temp"></span>
+            </br>
+              <span id="description">clear</span>
               <div class="units">
                 °<a href="" id="c-unit">C</a>|°<a href="" id="f-unit">F</a>
               </div>
             </div>
             <div class="details">
-              <div class="Precipitation">Precipitation</div>
-              <div class="Humidity">Humidity</div>
-              <div class="wind">wind</div>
+              <div class="pressure">pressure:<span id="pressure"></span></div>
+              <div class="Humidity">Humidity:<span id="humidity"></span>%</div>
+              <div class="wind">Wind:<span id="wind"></span></div>
             </div>
 
             <div class="location-btn">
@@ -47,8 +50,8 @@
           </div>
           <div class="col-4">
             <i class="fa-solid fa-cloud-bolt weather-icon"></i>
-            <h1>New York</h1>
-            <h2>date</h2>
+            <h1 id="city-name">New York</h1>
+            <h2 id="date"></h2>
             <div class="search">
               <form>
                 <div class="search-form" id="search-form">

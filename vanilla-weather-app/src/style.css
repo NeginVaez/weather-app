@@ -16,12 +16,26 @@
 #temp {
   font-size: 120px;
 }
+#description {
+  margin-top: 10px;
+  font-size: 30px;
+  text-transform: capitalize;
+}
 .temp .units {
   position: relative;
   font-size: 30px;
   top: -140px;
   left: 130px;
-  text-decoration: solid;
+  color: #5e63b6;
+  text-decoration: none;
+}
+a:link {
+  text-decoration: none;
+  color: #5e63b6;
+}
+
+a:visited {
+  text-decoration: none;
   color: #5e63b6;
 }
 .details {
