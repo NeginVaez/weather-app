@@ -1,4 +1,17 @@
-//weather
+function showDate(timestamp) {
+  let currentData = new Date(timestamp);
+  let hours = currentData.getHours();
+  let mins = currentData.getMinutes();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  let day = days[currentData.getDay()];
+  if (mins < 10) {
+    hours = `0${mins}`;
+  }
+  if (hours < 10) {
+    hours = `0${hours}`;
+  }
+  return `${day} ${hours}:${mins}`;
+}
 function showTemp(response) {
   console.log(response.data);
   let temp = document.querySelector("#temp");
@@ -13,10 +26,14 @@ function showTemp(response) {
   wind.innerHTML = Math.round(response.data.wind.speed);
   let description = document.querySelector("#description");
   description.innerHTML = response.data.condition.description;
+  let date = document.querySelector("#date");
+  date.innerHTML = showDate(response.data.time * 1000);
+  let icon = document.querySelector("#weather-icon");
+  icon.setAttribute("src", `${response.data.condition.icon_url}`);
+  icon.setAttribute("alt", `${response.data.condition.description}`);
 }
 
 let apiKey = "003t332ed0o5bff6b090e30a0649afb0";
-let apiUrl = `https://api.shecodes.io/weather/v1/current?query=london&key=${apiKey}&units=metric`;
+let city = "london";
+let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
 axios.get(apiUrl).then(showTemp);
-
-//time

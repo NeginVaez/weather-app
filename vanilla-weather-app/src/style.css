@@ -21,10 +21,11 @@
   font-size: 30px;
   text-transform: capitalize;
 }
+
 .temp .units {
   position: relative;
   font-size: 30px;
-  top: -140px;
+  top: -190px;
   left: 130px;
   color: #5e63b6;
   text-decoration: none;
@@ -60,15 +61,16 @@ a:visited {
   opacity: 0.85;
   cursor: pointer;
 }
-.weather-icon {
-  color: #5e63b6;
-  font-size: 150px;
-  margin: 150px 83px 10px 83px;
+#weather-icon {
+  display: block;
+  width: 200px;
+  margin: 0 auto;
+  margin-top: 110px;
   text-align: center;
 }
 h1,
 h2 {
-  margin-top: 10px;
+  margin-top: -10px;
   color: #27296d;
   text-align: center;
 }
