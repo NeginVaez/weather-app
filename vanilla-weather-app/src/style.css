@@ -116,3 +116,8 @@ footer {
 .forcast-notes {
   font-size: 24px;
 }
+
+.temp .active {
+  cursor: default;
+  color: #27296d;
+}

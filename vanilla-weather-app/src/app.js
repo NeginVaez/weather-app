@@ -30,6 +30,8 @@ function showTemp(response) {
   let icon = document.querySelector("#weather-icon");
   icon.setAttribute("src", `${response.data.condition.icon_url}`);
   icon.setAttribute("alt", `${response.data.condition.description}`);
+
+  cTemp = response.data.temperature.current;
 }
 function search(city) {
   let apiKey = "003t332ed0o5bff6b090e30a0649afb0";
@@ -43,5 +45,32 @@ function handleSubmit(event) {
   search(cityInput.value);
 }
 
+function changeUnitC(event) {
+  event.preventDefault();
+    celsius.classList.add("active");
+    Fahrenheit.classList.remove("active");
+  let tempC = document.querySelector("#temp");
+  tempC.innerHTML = Math.round(cTemp);
+}
+
+function changeUnitF(event) {
+  event.preventDefault();
+  celsius.classList.remove("active");
+  Fahrenheit.classList.add("active");
+
+  let farenheitTemp = cTemp * 1.8 + 32;
+  let tempF = document.querySelector("#temp");
+  tempF.innerHTML = Math.round(farenheitTemp);
+}
+let Fahrenheit = document.querySelector("#f-unit");
+Fahrenheit.addEventListener("click", changeUnitF);
+
+let celsius = document.querySelector("#c-unit");
+celsius.addEventListener("click", changeUnitC);
+
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);
+
+let cTemp = null;
+
+search("paris");
