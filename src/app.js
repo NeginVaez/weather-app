@@ -13,7 +13,8 @@ function showDate(timestamp) {
   return `${day} ${hours}:${mins}`;
 }
 
-function displayForcast() {
+function displayForcast(response) {
+  console.log(response.data.daily);
   let forecastElement = document.querySelector("#forecast");
   let days = ["Sun", "Mon", "Tue", "Wed"];
   let forcastHTML = `<div>`;
@@ -35,6 +36,9 @@ function displayForcast() {
 
 function getForecast(city) {
   console.log(city);
+  let forcastapiKey = "003t332ed0o5bff6b090e30a0649afb0";
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${forcastapiKey}&units=metri}`;
+  axios.get(apiUrl).then(displayForcast);
 }
 function showTemp(response) {
   let temp = document.querySelector("#temp");
@@ -56,7 +60,6 @@ function showTemp(response) {
   icon.setAttribute("alt", `${response.data.condition.description}`);
 
   cTemp = response.data.temperature.current;
-
   getForecast(response.data.city);
 }
 function search(city) {
@@ -100,4 +103,3 @@ form.addEventListener("submit", handleSubmit);
 let cTemp = null;
 
 search("paris");
-displayForcast();
