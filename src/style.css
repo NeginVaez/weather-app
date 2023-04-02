@@ -107,7 +107,7 @@ input {
 footer {
   text-align: center;
 }
-.forcasts {
+.forecasts {
   margin: 50px 50px -35px 50px;
   line-height: 20px;
 }
@@ -115,7 +115,7 @@ footer {
   width: 50px;
 }
 .forcast-date,
-.forcast {
+.forecasts {
   font-size: 24px;
 }
 .weather-forcast-temp-min {
@@ -125,7 +125,7 @@ footer {
 .weather-forcast-temp-max {
   font-size: 18px;
 }
-.forcast {
+.forecasts {
   font-weight: 400;
   margin-left: 70px;
   opacity: 0.8;

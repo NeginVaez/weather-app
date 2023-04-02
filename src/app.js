@@ -12,6 +12,30 @@ function showDate(timestamp) {
   }
   return `${day} ${hours}:${mins}`;
 }
+
+function displayForcast() {
+  let forecastElement = document.querySelector("#forecast");
+  let days = ["Sun", "Mon", "Tue", "Wed"];
+  let forcastHTML = `<div>`;
+  days.forEach(function (day) {
+    forcastHTML =
+      forcastHTML +
+      ` <img src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/mist-day.png"
+                  alt="" id="forcast-icon"/>
+                <span class="forcast-date"><strong>${day}</strong></span
+                ><br /><span class="forcast">Windy </span
+                ><span class="weather-forcast-temp-min"> 18°-</span
+                ><span class="weather-forcast-temp-max">20°</span>
+      `;
+  });
+
+  forcastHTML = forcastHTML + `</div>`;
+  forecastElement.innerHTML = forcastHTML;
+}
+
+function getForecast(city) {
+  console.log(city);
+}
 function showTemp(response) {
   let temp = document.querySelector("#temp");
   temp.innerHTML = Math.round(response.data.temperature.current);
@@ -32,6 +56,8 @@ function showTemp(response) {
   icon.setAttribute("alt", `${response.data.condition.description}`);
 
   cTemp = response.data.temperature.current;
+
+  getForecast(response.data.city);
 }
 function search(city) {
   let apiKey = "003t332ed0o5bff6b090e30a0649afb0";
@@ -47,8 +73,8 @@ function handleSubmit(event) {
 
 function changeUnitC(event) {
   event.preventDefault();
-    celsius.classList.add("active");
-    Fahrenheit.classList.remove("active");
+  celsius.classList.add("active");
+  Fahrenheit.classList.remove("active");
   let tempC = document.querySelector("#temp");
   tempC.innerHTML = Math.round(cTemp);
 }
@@ -74,3 +100,4 @@ form.addEventListener("submit", handleSubmit);
 let cTemp = null;
 
 search("paris");
+displayForcast();
