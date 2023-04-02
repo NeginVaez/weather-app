@@ -15,18 +15,18 @@ function showDate(timestamp) {
 
 function displayForcast(response) {
   console.log(response.data.daily);
+  let forecastData = response.data.daily;
   let forecastElement = document.querySelector("#forecast");
-  let days = ["Sun", "Mon", "Tue", "Wed"];
   let forcastHTML = `<div>`;
-  days.forEach(function (day) {
+  forecastData.forEach(function (forecastDay) {
     forcastHTML =
       forcastHTML +
-      ` <img src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/mist-day.png"
+      ` <img src="${forecastDay.condition.icon_url}"
                   alt="" id="forcast-icon"/>
-                <span class="forcast-date"><strong>${day}</strong></span
+                <span class="forcast-date"><strong>${forecastDay.time}</strong></span
                 ><br /><span class="forcast">Windy </span
-                ><span class="weather-forcast-temp-min"> 18°-</span
-                ><span class="weather-forcast-temp-max">20°</span>
+                ><span class="weather-forcast-temp-min"> ${forecastDay.temperature.maximum}°-</span
+                ><span class="weather-forcast-temp-max">${forecastDay.temperature.minimum}°</span>
       `;
   });
 
@@ -37,7 +37,7 @@ function displayForcast(response) {
 function getForecast(city) {
   console.log(city);
   let forcastapiKey = "003t332ed0o5bff6b090e30a0649afb0";
-  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${forcastapiKey}&units=metri}`;
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${forcastapiKey}&units=metric`;
   axios.get(apiUrl).then(displayForcast);
 }
 function showTemp(response) {
@@ -103,3 +103,4 @@ form.addEventListener("submit", handleSubmit);
 let cTemp = null;
 
 search("paris");
+//-10:11
