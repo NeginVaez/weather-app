@@ -13,21 +13,37 @@ function showDate(timestamp) {
   return `${day} ${hours}:${mins}`;
 }
 
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+  return days[day];
+}
+
 function displayForcast(response) {
   console.log(response.data.daily);
   let forecastData = response.data.daily;
   let forecastElement = document.querySelector("#forecast");
   let forcastHTML = `<div>`;
-  forecastData.forEach(function (forecastDay) {
-    forcastHTML =
-      forcastHTML +
-      ` <img src="${forecastDay.condition.icon_url}"
+  forecastData.forEach(function (forecastDay, index) {
+    if (index < 4) {
+      forcastHTML =
+        forcastHTML +
+        ` <img src="${forecastDay.condition.icon_url}"
                   alt="" id="forcast-icon"/>
-                <span class="forcast-date"><strong>${forecastDay.time}</strong></span
+                <span class="forcast-date"><strong>${formatDay(
+                  forecastDay.time
+                )}</strong></span
                 ><br /><span class="forcast">Windy </span
-                ><span class="weather-forcast-temp-min"> ${forecastDay.temperature.maximum}°-</span
-                ><span class="weather-forcast-temp-max">${forecastDay.temperature.minimum}°</span>
+                ><span class="weather-forcast-temp-min"> ${Math.round(
+                  forecastDay.temperature.minimum
+                )}° </span
+                ><span class="weather-forcast-temp-max">${Math.round(
+                  forecastDay.temperature.maximum
+                )}°</span>
       `;
+    }
   });
 
   forcastHTML = forcastHTML + `</div>`;
@@ -103,4 +119,3 @@ form.addEventListener("submit", handleSubmit);
 let cTemp = null;
 
 search("paris");
-//-10:11
