@@ -41,7 +41,7 @@ function displayForcast(response) {
                 )}° </span
                 ><span class="weather-forcast-temp-max">${Math.round(
                   forecastDay.temperature.maximum
-                )}°</span>
+                )}° C</span>
       `;
     }
   });
