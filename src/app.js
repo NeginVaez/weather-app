@@ -27,7 +27,7 @@ function displayForcast(response) {
   let forecastElement = document.querySelector("#forecast");
   let forcastHTML = `<div>`;
   forecastData.forEach(function (forecastDay, index) {
-    if (index < 4) {
+    if (index < 5) {
       forcastHTML =
         forcastHTML +
         ` <img src="${forecastDay.condition.icon_url}"
@@ -36,10 +36,10 @@ function displayForcast(response) {
                   forecastDay.time
                 )}</strong></span
                 ><br /><span class="forcast">Windy </span
-                ><span class="weather-forcast-temp-min"> ${Math.round(
+                ><span class="weather-forcast-temp-min id="temp-max"> ${Math.round(
                   forecastDay.temperature.minimum
                 )}° </span
-                ><span class="weather-forcast-temp-max">${Math.round(
+                ><span class="weather-forcast-temp-max" id="temp-min">${Math.round(
                   forecastDay.temperature.maximum
                 )}° C</span>
       `;
