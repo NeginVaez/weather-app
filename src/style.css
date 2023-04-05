@@ -14,10 +14,12 @@ body {
   margin-bottom: 50px;
   width: 809px;
   height: 500px;
-  font-family: "Lobster", cursive;
+  font-family: "Rajdhani", sans-serif;
   color: #27296d;
 }
-
+.col-4 {
+  height: 500px;
+}
 .temp {
   margin: 30px 50px -35px 50px;
 }

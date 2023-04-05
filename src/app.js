@@ -107,6 +107,20 @@ function changeUnitF(event) {
   let tempF = document.querySelector("#temp");
   tempF.innerHTML = Math.round(farenheitTemp);
 }
+
+function currentPositionTemp(position) {
+  let lon = position.coords.longitude;
+  let lat = position.coords.latitude;
+  let apiKeylocation = "003t332ed0o5bff6b090e30a0649afb0";
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?lon=${lon}&lat=${lat}&key=${apiKeylocation}&units=metric`;
+  axios.get(apiUrl).then(showTemp);
+}
+let currentPosition = document.querySelector("#current-location");
+currentPosition.addEventListener(
+  "click",
+  navigator.geolocation.getCurrentPosition(currentPositionTemp)
+);
+
 let Fahrenheit = document.querySelector("#f-unit");
 Fahrenheit.addEventListener("click", changeUnitF);
 
