@@ -1,15 +1,16 @@
 function showDate(timestamp) {
   let currentData = new Date(timestamp);
   let hours = currentData.getHours();
-  let mins = currentData.getMinutes();
-  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-  let day = days[currentData.getDay()];
-  if (mins < 10) {
-    hours = `0${mins}`;
-  }
   if (hours < 10) {
     hours = `0${hours}`;
   }
+  let mins = currentData.getMinutes();
+  if (mins < 10) {
+    hours = `0${mins}`;
+  }
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  let day = days[currentData.getDay()];
+
   return `${day} ${hours}:${mins}`;
 }
 
@@ -17,7 +18,6 @@ function formatDay(timestamp) {
   let date = new Date(timestamp * 1000);
   let day = date.getDay();
   let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-
   return days[day];
 }
 
@@ -108,13 +108,32 @@ function changeUnitF(event) {
   tempF.innerHTML = Math.round(farenheitTemp);
 }
 
-function currentPositionTemp(position) {
+function currentPositionTemp(position, response) {
   let lon = position.coords.longitude;
   let lat = position.coords.latitude;
+  let city = document.querySelector("#city-name");
+  city.innerHTML = response.data.city;
   let apiKeylocation = "003t332ed0o5bff6b090e30a0649afb0";
   let apiUrl = `https://api.shecodes.io/weather/v1/current?lon=${lon}&lat=${lat}&key=${apiKeylocation}&units=metric`;
   axios.get(apiUrl).then(showTemp);
 }
+
+function bg(timestamp) {
+  let date = new Date(timestamp);
+  let hours = date.getHours();
+
+  alert(hours);
+  if (12 < hours < 18) {
+    let bg = document.querySelector("#body");
+    bg.classList.remove("morning");
+    bg.classList.add("evening");
+  } else if (hours > 18) {
+    let bg = document.querySelector("#body");
+    bg.classList.remove("morning");
+    bg.classList.add("night");
+  }
+}
+
 let currentPosition = document.querySelector("#current-location");
 currentPosition.addEventListener(
   "click",
@@ -131,5 +150,5 @@ let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);
 
 let cTemp = null;
-
 search("paris");
+bg();

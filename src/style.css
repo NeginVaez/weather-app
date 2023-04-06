@@ -1,10 +1,25 @@
 body {
-  background: linear-gradient(to top, #fddb92 0%, #d1fdff 100%);
-}
+  /*background: linear-gradient(to top, #fddb92 0%, #d1fdff 100%);*/
 
+  /*background-image: url("https://s3.amazonaws.com/shecodesio-production/uploads/files/000/075/517/original/Warriors___Thor__Ragnarok__4__-_III%29_Prologue__Warriors.gif?1680799032");
+  */
+  background-size: 100%;
+}
+.morning {
+  background-image: url("https://s3.amazonaws.com/shecodesio-production/uploads/files/000/075/517/original/Warriors___Thor__Ragnarok__4__-_III%29_Prologue__Warriors.gif?1680799032");
+  background-size: 100%;
+}
+.evening {
+  background-image: url("https://s3.amazonaws.com/shecodesio-production/uploads/files/000/075/521/original/Photography_GIF_by_Living_Stills_-_Find___Share_on_GIPHY.gif?1680800988");
+  background-size: 100%;
+}
+.night {
+  background-image: url("https://s3.amazonaws.com/shecodesio-production/uploads/files/000/075/550/original/Poetic_GIFs_of_Starry_Nights.gif?1680806507");
+  background-size: 100%;
+}
 .wrapper {
   background: transparent;
-
+  background: rgba(254, 254, 254, 0.5);
   border: 1px #291d08;
   border-style: dashed;
   border-width: thin;
@@ -19,6 +34,14 @@ body {
 }
 .col-4 {
   height: 500px;
+}
+#temp:hover {
+  opacity: 50%;
+  border-color: #a393eb;
+  border-radius: 50px;
+  transition: all 200ms ease-in-out;
+  size: 20px;
+  cursor: context-menu;
 }
 .temp {
   margin: 30px 50px -35px 50px;
@@ -58,7 +81,6 @@ a:visited {
 }
 .location-btn {
   margin-left: 45px;
-  transition: all 200ms ease-in-out;
 }
 #current-location {
   width: 130px;
@@ -69,10 +91,13 @@ a:visited {
   border: none;
   font-size: 10px;
 }
-.location-btn:hover {
+#current-location:hover {
   opacity: 0.85;
   cursor: pointer;
+  font-size: 13px;
+  transition: all 700ms ease-in-out;
 }
+
 #weather-icon {
   display: block;
   width: 150px;
@@ -129,6 +154,10 @@ footer {
 #forcast-icon {
   width: 60px;
 }
+#forcast-icon:hover {
+  opacity: 50%;
+  transition: all 500ms ease-in-out;
+}
 .forcast-date,
 .forecasts {
   font-size: 15px;
@@ -151,4 +180,6 @@ footer {
 }
 footer {
   margin-top: 10px;
+  color: whitesmoke;
+  text-shadow: whitesmoke;
 }
