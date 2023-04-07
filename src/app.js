@@ -1,4 +1,5 @@
 function showDate(timestamp) {
+  console.log(timestamp);
   let currentData = new Date(timestamp);
   let hours = currentData.getHours();
   if (hours < 10) {
@@ -6,10 +7,19 @@ function showDate(timestamp) {
   }
   let mins = currentData.getMinutes();
   if (mins < 10) {
-    hours = `0${mins}`;
+    mins = `0${mins}`;
   }
   let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   let day = days[currentData.getDay()];
+  if (hours > 18) {
+    let bg = document.querySelector("#body");
+    bg.classList.remove("morning");
+    bg.classList.add("night");
+  } else if (hours > 12) {
+    let bg = document.querySelector("#body");
+    bg.classList.remove("morning");
+    bg.classList.add("evening");
+  }
 
   return `${day} ${hours}:${mins}`;
 }
@@ -118,22 +128,6 @@ function currentPositionTemp(position, response) {
   axios.get(apiUrl).then(showTemp);
 }
 
-function bg(timestamp) {
-  let date = new Date(timestamp);
-  let hours = date.getHours();
-
-  alert(hours);
-  if (12 < hours < 18) {
-    let bg = document.querySelector("#body");
-    bg.classList.remove("morning");
-    bg.classList.add("evening");
-  } else if (hours > 18) {
-    let bg = document.querySelector("#body");
-    bg.classList.remove("morning");
-    bg.classList.add("night");
-  }
-}
-
 let currentPosition = document.querySelector("#current-location");
 currentPosition.addEventListener(
   "click",
@@ -150,5 +144,5 @@ let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);
 
 let cTemp = null;
+
 search("paris");
-bg();
